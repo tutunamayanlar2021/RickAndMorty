@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6y8-9D-rim">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tGx-0C-Xvs">
+                                    <size key="itemSize" width="176" height="273"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SeriesCollectionViewCell" id="fEb-KL-ggC" customClass="SeriesCollectionViewCell" customModule="RickAndMorty" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="176" height="273"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9yc-Uq-RBU">
+                                            <rect key="frame" x="0.0" y="0.0" width="176" height="273"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8ki-Ic-uDn">
+                                                    <rect key="frame" x="10" y="0.0" width="156" height="216.33333333333334"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rick and Mortydfhdgfvgdfvgdvfdhfv" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5uT-27-5bZ">
+                                                    <rect key="frame" x="8" y="224.33333333333334" width="160" height="40.666666666666657"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40.670000000000002" id="GF5-2k-Nsr"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="8ki-Ic-uDn" firstAttribute="top" secondItem="9yc-Uq-RBU" secondAttribute="top" id="1d9-MM-nj8"/>
+                                                <constraint firstAttribute="bottom" secondItem="5uT-27-5bZ" secondAttribute="bottom" constant="8" id="WS6-d6-rl2"/>
+                                                <constraint firstAttribute="trailing" secondItem="8ki-Ic-uDn" secondAttribute="trailing" constant="10" id="ewj-qD-9qD"/>
+                                                <constraint firstAttribute="trailing" secondItem="5uT-27-5bZ" secondAttribute="trailing" constant="8" id="sLr-sh-CQA"/>
+                                                <constraint firstItem="5uT-27-5bZ" firstAttribute="leading" secondItem="9yc-Uq-RBU" secondAttribute="leading" constant="8" id="slF-3z-Krx"/>
+                                                <constraint firstItem="8ki-Ic-uDn" firstAttribute="leading" secondItem="9yc-Uq-RBU" secondAttribute="leading" constant="10" id="z63-vX-4Mi"/>
+                                                <constraint firstItem="5uT-27-5bZ" firstAttribute="top" secondItem="8ki-Ic-uDn" secondAttribute="bottom" constant="8" id="zbQ-c4-T3g"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="176" height="273"/>
+                                        <connections>
+                                            <outlet property="seriesImageView" destination="8ki-Ic-uDn" id="52n-Gz-CIL"/>
+                                            <outlet property="titleLbl" destination="5uT-27-5bZ" id="HN8-UD-mj5"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6y8-9D-rim" secondAttribute="bottom" id="4Vt-yh-pdc"/>
+                            <constraint firstItem="6y8-9D-rim" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="5Xl-7b-Jbm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6y8-9D-rim" secondAttribute="trailing" id="hs0-jb-77v"/>
+                            <constraint firstItem="6y8-9D-rim" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vWC-Je-UHR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="6y8-9D-rim" id="WaJ-ti-9De"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="246.56488549618319" y="-46.478873239436624"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
