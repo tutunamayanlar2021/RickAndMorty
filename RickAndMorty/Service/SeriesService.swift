@@ -33,7 +33,9 @@ class SeriesService {
                 
                 do {
                     let apiResponse = try JSONDecoder().decode(APIResponse.self, from: data)
+                    
                     self?.delegate?.didFetchSeries(apiResponse.results)
+                   // print(apiResponse.results)
                 } catch {
                     self?.delegate?.didFailWithError(error)
                 }

@@ -29,5 +29,6 @@ struct Series: Codable {
 
 struct APIResponse: Codable {
     let results: [Series]
+
 }
 

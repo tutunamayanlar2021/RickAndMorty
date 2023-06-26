@@ -41,6 +41,12 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(series[indexPath.row].name)
+        
+        let secondVC = SecondViewController()
+        secondVC.name = series[indexPath.row].name
+        secondVC.imageUrl = series[indexPath.row].image
+        self.present(secondVC, animated: true, completion: nil)
+        
     }
 }
 
