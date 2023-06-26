@@ -1,10 +1,11 @@
 import UIKit
 
 class ViewController: UIViewController {
-  
+    
     @IBOutlet weak var collectionView: UICollectionView!
     var series: [Series] = []
     let seriesService = SeriesService()
+    var destinationVC = CharacterDetailViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +18,8 @@ class ViewController: UIViewController {
         seriesService.delegate = self
         seriesService.fetchSeriesData()
     }
+    
+    
 }
 
 extension ViewController: UICollectionViewDataSource {
@@ -40,15 +43,21 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(series[indexPath.row].name)
-        
-        let secondVC = SecondViewController()
-        secondVC.name = series[indexPath.row].name
-        secondVC.imageUrl = series[indexPath.row].image
-        self.present(secondVC, animated: true, completion: nil)
-        
+        self.performSegue(withIdentifier: "goToDetail", sender: indexPath)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToDetail",
+           let indexPath = sender as? IndexPath,
+           let destinationVC = segue.destination as? CharacterDetailViewController {
+            let selectedSeries = series[indexPath.row]
+            destinationVC.name = selectedSeries.name
+            destinationVC.imageUrl = selectedSeries.image
+        }
     }
 }
+
+
 
 extension ViewController: SeriesServiceDelegate {
     func didFetchSeries(_ series: [Series]) {

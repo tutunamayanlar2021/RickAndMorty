@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -14,11 +14,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6y8-9D-rim">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tGx-0C-Xvs">
                                     <size key="itemSize" width="176" height="273"/>
@@ -78,29 +78,69 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="6y8-9D-rim" id="WaJ-ti-9De"/>
+                        <segue destination="rWz-KX-JKf" kind="presentation" identifier="goToDetail" id="aTe-1H-ZqK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="246.56488549618319" y="-46.478873239436624"/>
         </scene>
-        <!--View Controller-->
+        <!--Character Detail View Controller-->
         <scene sceneID="4lT-JD-PUw">
             <objects>
-                <viewController id="rWz-KX-JKf" sceneMemberID="viewController">
+                <viewController id="rWz-KX-JKf" customClass="CharacterDetailViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6gw-mt-wkY">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BfR-iK-f6e">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="421"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szQ-hY-ShC">
+                                <rect key="frame" x="146.66666666666666" y="23" width="100" height="20.333333333333329"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Dyb-9e-PKd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2t-bP-Zxf">
+                                <rect key="frame" x="20" y="23" width="49" height="34"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system">
+                                    <color key="baseForegroundColor" red="0.17175418810000001" green="0.17175418810000001" blue="0.17175418810000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="backButton:" destination="rWz-KX-JKf" eventType="touchUpInside" id="XVF-oK-aaN"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="f4K-SG-ryO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="BfR-iK-f6e" firstAttribute="top" secondItem="f4K-SG-ryO" secondAttribute="top" id="0qY-Dm-p4q"/>
+                            <constraint firstItem="szQ-hY-ShC" firstAttribute="top" secondItem="f4K-SG-ryO" secondAttribute="top" constant="23" id="3MS-Kb-LPv"/>
+                            <constraint firstItem="BfR-iK-f6e" firstAttribute="trailing" secondItem="f4K-SG-ryO" secondAttribute="trailing" id="AjG-EF-NtL"/>
+                            <constraint firstItem="T2t-bP-Zxf" firstAttribute="leading" secondItem="f4K-SG-ryO" secondAttribute="leading" constant="20" id="CsY-et-Xxk"/>
+                            <constraint firstItem="BfR-iK-f6e" firstAttribute="leading" secondItem="f4K-SG-ryO" secondAttribute="leading" id="Rws-vT-DoC"/>
+                            <constraint firstItem="szQ-hY-ShC" firstAttribute="centerX" secondItem="6gw-mt-wkY" secondAttribute="centerX" id="cSb-rA-08I"/>
+                            <constraint firstItem="f4K-SG-ryO" firstAttribute="bottom" secondItem="BfR-iK-f6e" secondAttribute="bottom" multiplier="2" id="qQ9-Xo-5bs"/>
+                            <constraint firstItem="T2t-bP-Zxf" firstAttribute="top" secondItem="f4K-SG-ryO" secondAttribute="top" constant="23" id="qZ8-7O-tb1"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="characterImage" destination="BfR-iK-f6e" id="BbM-Qn-nQY"/>
+                        <outlet property="characterTitle" destination="szQ-hY-ShC" id="w8t-4E-Cnb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TLc-ph-q0x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1048" y="-46"/>
+            <point key="canvasLocation" x="1123" y="-46"/>
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.backward" catalog="system" width="128" height="95"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

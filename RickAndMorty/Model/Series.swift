@@ -4,6 +4,14 @@ import UIKit
 struct Series: Codable {
     let name: String
     let image: String
+    let status: String
+    let species: String
+    let gender: String
+    let origin: Origin
+    let location: Location
+    let episode: [String]
+    
+    
     
     func downloadImage(completion: @escaping (UIImage?) -> Void) {
         guard let url = URL(string: image) else {
@@ -15,7 +23,9 @@ struct Series: Codable {
             if let error = error {
                 print("Error downloading image: \(error)")
                 completion(nil)
+                
                 return
+                
             }
             
             if let data = data, let image = UIImage(data: data) {
@@ -31,4 +41,13 @@ struct APIResponse: Codable {
     let results: [Series]
 
 }
+struct Origin: Codable {
+    let name: String
+    // Diğer gerekli alanları buraya ekleyebilirsiniz
+}
 
+
+struct Location: Codable {
+    let name: String
+    let url: String
+}

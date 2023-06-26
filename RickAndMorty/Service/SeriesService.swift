@@ -1,10 +1,3 @@
-//
-//  SeriesService.swift
-//  RickAndMorty
-//
-//  Created by Kader Oral on 25.06.2023.
-//
-
 import Foundation
 
 protocol SeriesServiceDelegate: AnyObject {
@@ -34,8 +27,18 @@ class SeriesService {
                 do {
                     let apiResponse = try JSONDecoder().decode(APIResponse.self, from: data)
                     
-                    self?.delegate?.didFetchSeries(apiResponse.results)
-                   // print(apiResponse.results)
+                    let seriesWithDetails = apiResponse.results.map { series in
+                        return Series(name: series.name,
+                                      image: series.image,
+                                      status: series.status,
+                                      species: series.species,
+                                      gender: series.gender,
+                                      origin: series.origin,
+                                      location: series.location,
+                                      episode: series.episode)
+                    }
+                    
+                    self?.delegate?.didFetchSeries(seriesWithDetails)
                 } catch {
                     self?.delegate?.didFailWithError(error)
                 }
