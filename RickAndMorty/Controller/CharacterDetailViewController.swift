@@ -9,7 +9,7 @@ import UIKit
 
 class CharacterDetailViewController: UIViewController {
     var name: String?
-    var imageUrl = ""
+    var imageUrl : String?
     var status: String?
     var species: String?
     var gender: String?
@@ -30,7 +30,7 @@ class CharacterDetailViewController: UIViewController {
         
         
         DispatchQueue.global().async {
-            if let url = URL(string: self.imageUrl), let imageData = try? Data(contentsOf: url) {
+            if let url = URL(string: self.imageUrl ?? "https://media.istockphoto.com/id/1216251206/vector/no-image-available-icon.jpg?s=170667a&w=0&k=20&c=N-XIIeLlhUpm2ZO2uGls-pcVsZ2FTwTxZepwZe4DuE4="), let imageData = try? Data(contentsOf: url) {
                 DispatchQueue.main.async {
                     self.characterImage.image = UIImage(data: imageData)
                 }
