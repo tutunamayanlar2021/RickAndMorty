@@ -43,7 +43,6 @@ struct APIResponse: Codable {
 }
 struct Origin: Codable {
     let name: String
-    // Diğer gerekli alanları buraya ekleyebilirsiniz
 }
 
 

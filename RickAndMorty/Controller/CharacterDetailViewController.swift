@@ -22,6 +22,7 @@ class CharacterDetailViewController: UIViewController {
     
     
     @IBAction func backButton(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
     }
     
     override func viewDidLoad() {
@@ -36,8 +37,13 @@ class CharacterDetailViewController: UIViewController {
             }
         }
         characterTitle.text = name ?? "isimsiz"
+        characterTitle.textColor = .black
+        var boldFont = UIFont.boldSystemFont(ofSize: characterTitle.font.pointSize)
+        boldFont  = characterTitle.font.withSize(characterTitle.font.pointSize * 1.4)
+        characterTitle.font = boldFont
         // Do any additional setup after loading the view.
     }
+    
     
     private func getEpisodeNumbers() -> [String] {
         var episodeNumbers: [String] = []
@@ -48,7 +54,7 @@ class CharacterDetailViewController: UIViewController {
         }
         return episodeNumbers
     }
-
+    
 }
 
 extension CharacterDetailViewController: UITableViewDelegate, UITableViewDataSource{
@@ -59,40 +65,40 @@ extension CharacterDetailViewController: UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell") as! CustomTableViewCell
         var cellText: String?
-            
+        
         switch indexPath.row {
-                    case 0:
-                        cellText = "Status: \(status ?? "")"
-                    case 1:
-                        cellText = "Species: \(species ?? "")"
-                    case 2:
-                        cellText = "Gender: \(gender ?? "")"
-                    case 3:
-                        cellText = "Origin: \(origin ?? "")"
-                    case 4:
-                        cellText = "Location: \(location ?? "")"
-                case 5:
-                    // Handle episode data
-                    let episodeNumbers = getEpisodeNumbers()
-                    let episodeText = episodeNumbers.joined(separator: ", ")
-                    cellText = "Episode: \(episodeText)"
-                default:
-                    break
-                }
-            
-            cell.configure(with: cellText)
- 
-            return cell
+        case 0:
+            cellText = "Status: \(status ?? "")"
+        case 1:
+            cellText = "Species: \(species ?? "")"
+        case 2:
+            cellText = "Gender: \(gender ?? "")"
+        case 3:
+            cellText = "Origin: \(origin ?? "")"
+        case 4:
+            cellText = "Location: \(location ?? "")"
+        case 5:
+            // Handle episode data
+            let episodeNumbers = getEpisodeNumbers()
+            let episodeText = episodeNumbers.joined(separator: ", ")
+            cellText = "Episode: \(episodeText)"
+        default:
+            break
+        }
+        
+        cell.configure(with: cellText)
+        cell.tableLabel.sizeToFit()
+        return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath)
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-       return  44.0
+        return  44.0
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44.0
     }
-
+    
 }
