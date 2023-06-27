@@ -10,8 +10,8 @@ struct Series: Codable {
     let origin: Origin
     let location: Location
     let episode: [String]
-    
-    
+
+
     
     func downloadImage(completion: @escaping (UIImage?) -> Void) {
         guard let url = URL(string: image) else {

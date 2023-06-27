@@ -35,7 +35,11 @@ class SeriesService {
                                       gender: series.gender,
                                       origin: series.origin,
                                       location: series.location,
-                                      episode: series.episode)
+                                      episode: series.episode
+                                      
+                        )
+                        
+                        
                     }
                     
                     self?.delegate?.didFetchSeries(seriesWithDetails)
