@@ -15,6 +15,10 @@ class CustomTableViewCell: UITableViewCell {
         tableLabel.numberOfLines = 0
         tableLabel.lineBreakMode = .byWordWrapping
         tableLabel.translatesAutoresizingMaskIntoConstraints = false
+        tableLabel.numberOfLines = 0
+
+        tableLabel.sizeToFit()
+
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

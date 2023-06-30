@@ -9,13 +9,15 @@ import UIKit
 
 class CharacterDetailViewController: UIViewController {
     var name: String?
-    var imageUrl : String?
+    var image : String?
     var status: String?
     var species: String?
     var gender: String?
     var origin: String?
     var location: String?
-    var episode: [String?] = []
+    //var episode: [String?] = []
+    
+    var character: Series?
     @IBOutlet weak var characterImage: UIImageView!
     
     @IBOutlet weak var characterTitle: UILabel!
@@ -30,7 +32,7 @@ class CharacterDetailViewController: UIViewController {
         
         
         DispatchQueue.global().async {
-            if let url = URL(string: self.imageUrl ?? "https://media.istockphoto.com/id/1216251206/vector/no-image-available-icon.jpg?s=170667a&w=0&k=20&c=N-XIIeLlhUpm2ZO2uGls-pcVsZ2FTwTxZepwZe4DuE4="), let imageData = try? Data(contentsOf: url) {
+            if let url = URL(string: self.image ?? "https://media.istockphoto.com/id/1216251206/vector/no-image-available-icon.jpg?s=170667a&w=0&k=20&c=N-XIIeLlhUpm2ZO2uGls-pcVsZ2FTwTxZepwZe4DuE4="), let imageData = try? Data(contentsOf: url) {
                 DispatchQueue.main.async {
                     self.characterImage.image = UIImage(data: imageData)
                 }
@@ -41,19 +43,9 @@ class CharacterDetailViewController: UIViewController {
         var boldFont = UIFont.boldSystemFont(ofSize: characterTitle.font.pointSize)
         boldFont  = characterTitle.font.withSize(characterTitle.font.pointSize * 1.4)
         characterTitle.font = boldFont
-        // Do any additional setup after loading the view.
     }
     
-    
-    private func getEpisodeNumbers() -> [String] {
-        var episodeNumbers: [String] = []
-        for episodeUrl in episode {
-            if let url = episodeUrl, let episodeNumber = url.split(separator: "/").last {
-                episodeNumbers.append(String(episodeNumber))
-            }
-        }
-        return episodeNumbers
-    }
+
     
 }
 
@@ -76,16 +68,15 @@ extension CharacterDetailViewController: UITableViewDelegate, UITableViewDataSou
         case 3:
             cellText = "Origin: \(origin ?? "")"
         case 4:
-            cellText = "Location: \(location ?? "")"
+            cellText = "Location: \( location ?? "")"
         case 5:
             // Handle episode data
-            let episodeNumbers = getEpisodeNumbers()
-            let episodeText = episodeNumbers.joined(separator: ", ")
-            cellText = "Episode: \(episodeText)"
+            let episodeNumbers = character?.getEpisodeNumbers()
+            let episodeText = episodeNumbers?.joined(separator: ", ")
+            cellText = "Episode: \(String(describing: episodeText))"
         default:
             break
         }
-        
         cell.configure(with: cellText)
         cell.tableLabel.sizeToFit()
         return cell

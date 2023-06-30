@@ -10,8 +10,16 @@ struct Series: Codable {
     let origin: Origin
     let location: Location
     let episode: [String]
-
-
+    
+    func getEpisodeNumbers() -> [String] {
+           var episodeNumbers: [String] = []
+           for episodeUrl in episode {
+               if let episodeNumber = episodeUrl.split(separator: "/").last {
+                   episodeNumbers.append(String(episodeNumber))
+               }
+           }
+           return episodeNumbers
+       }
     
     func downloadImage(completion: @escaping (UIImage?) -> Void) {
         guard let url = URL(string: image) else {

@@ -52,13 +52,13 @@ extension ViewController: UICollectionViewDelegate {
            let destinationVC = segue.destination as? CharacterDetailViewController {
             let selectedSeries = series[indexPath.row]
             destinationVC.name = selectedSeries.name
-            destinationVC.imageUrl = selectedSeries.image
+            destinationVC.image = selectedSeries.image
             destinationVC.status = selectedSeries.status
             destinationVC.species = selectedSeries.species
             destinationVC.gender = selectedSeries.gender
             destinationVC.origin = selectedSeries.origin.name
             destinationVC.location = selectedSeries.location.name
-            destinationVC.episode = selectedSeries.episode
+            
         }
     }
 }
